@@ -1,5 +1,6 @@
 import os
 import requests
+from dotenv import load_dotenv
 from random import randint
 from DragMusic.utils.database import (
     add_served_chat,
@@ -42,7 +43,7 @@ import asyncio
 from DragMusic.utils.extraction import extract_user
 
 #youtube api key
-YOUTUBE_API_KEY = 'AIzaSyAisAILkwpcmK7TC79R6UhQ3isSqUnHvhY'  # Regenerate your key and replace this
+YOUTUBE_API_KEY = os.getenv('YOUTUBE_API_KEY')
 
 
 # Define a dictionary to track the last message timestamp for each user
