@@ -10,4 +10,4 @@ WORKDIR /app/
 RUN pip3 install --no-cache-dir -U -r requirements.txt
 RUN pip3 install uvicorn fastapi
 
-CMD bash start & python3 server.py
+CMD ["python3", "app.py"]
