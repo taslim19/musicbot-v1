@@ -1,3 +1,4 @@
+
 import asyncio
 import os
 from datetime import datetime, timedelta
@@ -38,8 +39,7 @@ from DragMusic.utils.exceptions import AssistantErr
 from DragMusic.utils.formatters import check_duration, seconds_to_min, speed_converter
 from DragMusic.utils.inline.play import stream_markup
 from DragMusic.utils.stream.autoclear import auto_clean
-from DragMusic.utils.thumbnails import gen_thumb
-from DragMusic.utils.thumbnails import generate_thumb  # <- correct name
+from DragMusic.utils.thumbnails import get_thumb
 from strings import get_string
 
 autoend = {}
@@ -56,7 +56,7 @@ async def _clear_(chat_id):
 class Call(PyTgCalls):
     def __init__(self):
         self.userbot1 = Client(
-            name="AnonXAss1",
+            name="dragMusic1",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING1),
@@ -418,7 +418,7 @@ class Call(PyTgCalls):
                         original_chat_id,
                         text=_["call_6"],
                     )
-                img = await gen_thumb(videoid)
+                img = await get_thumb(videoid)
                 button = stream_markup2(_, chat_id)
                 run = await app.send_photo(
                     chat_id=original_chat_id,
@@ -465,7 +465,7 @@ class Call(PyTgCalls):
                         original_chat_id,
                         text=_["call_6"],
                     )
-                img = await gen_thumb(videoid)
+                img = await get_thumb(videoid)
                 button = stream_markup(_, videoid, chat_id)
                 await mystic.delete()
                 run = await app.send_photo(
@@ -560,7 +560,7 @@ class Call(PyTgCalls):
                     db[chat_id][0]["mystic"] = run
                     db[chat_id][0]["markup"] = "tg"
                 else:
-                    img = await gen_thumb(videoid)
+                    img = await get_thumb(videoid)
                     button = stream_markup(_, videoid, chat_id)
                     run = await app.send_photo(
                         chat_id=original_chat_id,
