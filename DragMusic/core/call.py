@@ -39,6 +39,7 @@ from DragMusic.utils.formatters import check_duration, seconds_to_min, speed_con
 from DragMusic.utils.inline.play import stream_markup
 from DragMusic.utils.stream.autoclear import auto_clean
 from DragMusic.utils.thumbnails import gen_thumb
+from DragMusic.utils.thumbnails import generate_thumb  # <- correct name
 from strings import get_string
 
 autoend = {}
