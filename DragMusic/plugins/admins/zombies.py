@@ -8,7 +8,7 @@ from pyrogram.errors import FloodWait
 from DragMusic import app
 from time import time
 import asyncio
-from DragMusic.utils.extraction import extract_user
+from AnonXMusic.utils.extraction import extract_user
 
 # Define a dictionary to track the last message timestamp for each user
 user_last_message_time = {}
@@ -114,7 +114,7 @@ async def admins(client, message):
         async for admin in app.get_chat_members(
             message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS
         ):
-            if admin.privileges.is_Dragmous == False:
+            if admin.privileges.is_anonymous == False:
                 if admin.user.is_bot == True:
                     pass
                 elif admin.status == ChatMemberStatus.OWNER:

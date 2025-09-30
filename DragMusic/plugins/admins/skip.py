@@ -9,7 +9,7 @@ from DragMusic.utils.database import get_loop
 from DragMusic.utils.decorators import AdminRightsCheck
 from DragMusic.utils.inline import close_markup, stream_markup
 from DragMusic.utils.stream.autoclear import auto_clean
-from DragMusic.utils.thumbnails import gen_thumb
+from DragMusic.utils.thumbnails import get_thumb
 from config import BANNED_USERS
 
 
@@ -115,7 +115,7 @@ async def skip(cli, message: Message, _, chat_id):
         except:
             return await message.reply_text(_["call_6"])
         button = stream_markup(_, chat_id)
-        img = await gen_thumb(videoid)
+        img = await get_thumb(videoid)
         run = await message.reply_photo(
             photo=img,
             caption=_["stream_1"].format(
@@ -148,7 +148,7 @@ async def skip(cli, message: Message, _, chat_id):
         except:
             return await mystic.edit_text(_["call_6"])
         button = stream_markup(_, chat_id)
-        img = await gen_thumb(videoid)
+        img = await get_thumb(videoid)
         run = await message.reply_photo(
             photo=img,
             caption=_["stream_1"].format(
@@ -217,7 +217,7 @@ async def skip(cli, message: Message, _, chat_id):
             db[chat_id][0]["markup"] = "tg"
         else:
             button = stream_markup(_, chat_id)
-            img = await gen_thumb(videoid)
+            img = await get_thumb(videoid)
             run = await message.reply_photo(
                 photo=img,
                 caption=_["stream_1"].format(
